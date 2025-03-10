@@ -1,0 +1,684 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #222;
+    zoom: 100%;
+}
+
+.game {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 35vw;
+    height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /*
+    border-color: red;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#gameDescription, #gameDescriptionTimer {
+    font-size: 0.85rem;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+  /* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+  /* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1b1b1b;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 2px;
+    background-color: #2e2e2e;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #161616;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #222;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(22px);
+    -ms-transform: translateX(22px);
+    transform: translateX(22px);
+}
+
+  /* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0f0f0f;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0f0f0f;
+}
+
+@media screen and (max-width: 736px) {
+    body {
+        zoom: 80%;
+    }
+
+    .game {
+        width: 95vw;
+        height: 100vh;
+    }
+
+    #players {
+        margin: 0% 0%;
+    }
+
+    #gameName {
+        font-size: 2.5rem;
+    }
+
+    #gameIcon {
+        max-width: 30%;
+    }
+
+    #gameInstructions {
+        font-size: 2.3rem !important;
+    }
+
+    .inputBox {
+        width: 18em !important;
+    }
+
+    #word, #impostorWord {
+        font-size: 3rem !important;
+    }
+
+    #writer, #writerName, #name {
+        font-size: 3rem !important;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    body {
+        zoom: 80%;
+    }
+
+    .game {
+        width: 95vw;
+        height: 100vh;
+    }
+
+    #players {
+        margin: 0% 0%;
+    }
+
+    #gameName {
+        font-size: 2.5rem;
+    }
+
+    #gameIcon {
+        max-width: 30%;
+    }
+
+    #gameInstructions {
+        font-size: 2.3rem !important;
+    }
+
+    .inputBox {
+        width: 18em !important;
+    }
+
+    #word, #impostorWord {
+        font-size: 3rem !important;
+    }
+
+    #writer, #writerName, #name {
+        font-size: 3rem !important;
+    }
+}
+
+@media screen and (min-width: 961px) and (max-width: 1320px) {
+    body {
+        zoom: 90%;
+    }
+
+    .game {
+        width: 65vw;
+        height: 90vh;
+    }
+}
+
+@media screen and (min-width: 961px) and (max-width: 1620px) {
+    body {
+        zoom: 90%;
+    }
+
+    .game {
+        width: 65vw;
+        height: 90vh;
+    }
+}
+
+@media screen and (min-width: 961px) and (max-width: 1880px) {
+    body {
+        zoom: 100%;
+    }
+
+    .game {
+        width: 35vw;
+        height: 80vh;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        to bottom,
+        #29ffc6,
+        #20e3b2,
+        #0cebeb
+    );
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+    background: #222;
+}
+
+p {
+    padding: 30px 0 5px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+h1 {
+    padding: 5px 0 5px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 4.5rem;
+}
+
+/* ------------------------- Button Zone ------------------------- */
+
+#buttons {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    bottom: 2%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.btn, .btnConfirm, .btnReset {
+    border: none;
+    padding: 0.7rem 2.7rem;
+    margin: 0 1rem;
+    cursor: pointer;
+    border-radius: 2rem;
+    font-size: 1rem;
+    color: #fff;
+    position: relative;
+}
+
+.btn {
+    background: #20e3b2;
+}
+
+.btnConfirm {
+    background: #E32051;
+}
+
+.btnReset {
+    background: #2e2e2e;
+}
+
+.btn::before, .btnConfirm::before, .btnReset::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: scaleX(0);
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+}
+
+.btn::before {
+    background: #29ffc6;
+}
+
+.btnConfirm::before {
+    background: #FF2962;
+}
+
+.btnReset::before {
+ background: #313131;
+}
+
+.btn:active::before, .btnConfirm:active::before, .btnReset:active::before {
+    animation: ripple 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes ripple {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* ------------------------- Main Menu ------------------------- */
+
+#titlePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#mainMenu {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#explicationDiv, #instructionsDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 85%;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#instructionsDiv {
+    justify-content: flex-start;
+}
+
+.explication, #instructionsGame {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+/* ------------------------- Select Players ------------------------- */
+
+#selectPlayers {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#instructions {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 35%;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#players {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 50%;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin: 0% 5%;
+
+    /*
+    border-color: violet;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#line {
+    margin-bottom: 30px;
+    height: 2px;
+    width: 85%;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#titlePage #line {
+    height: 5px;
+    background: linear-gradient(90deg, #ff1b69, #ff0, #2196f3, #9c27b0, #ff1b69);
+    animation: animateMain 2s linear infinite;
+}
+
+@keyframes animateMain {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 35rem;
+    }
+}
+
+.input-container {
+    width: 15em;
+    position: relative;
+}
+
+.label {
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    transition: all 0.2s;
+    padding: 0 0.1em;
+    z-index: 1;
+    color: #b3b3b3;
+    font-size: 1.1em;
+}
+
+.num-input {
+    padding: 0.8rem;
+    width: 100%;
+    height: 100%;
+    border: 0.15em solid #29ffc6;
+    background: #272530;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    outline: none;
+    transition: all 0.3s;
+    color: #fff;
+}
+
+.label::before {
+    content: '';
+    height: 1em;
+    left: -0.1em;
+    background: #272530;
+    position: absolute;
+    width: 105%;
+    z-index: -1;
+}
+
+.num-input:focus {
+    border: 0.15em solid #0cebeb;
+}
+
+.num-input:focus + .label, .filled {
+    top: -0.6em;
+    color: #0cebeb;
+    font-size: 0.9em;
+}
+
+.num-input::placeholder {
+    font-size: 0.9em;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.num-input:focus::placeholder {
+    opacity: 1;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+
+
+
+
+
+
+.inputBox {
+    position: relative;
+    width: 25em;
+}
+
+.inputBox input {
+    width:100%;
+    background: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    padding: 40px 0 5px;
+}
+
+.inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 40px 0 5px;
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    font-size: 1.65em;
+    letter-spacing: 0.1em;
+    transition: 0.5s;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+    color: #20e3b2;
+    transform: translateY(-1.5em);
+    font-size: 1em;
+}
+
+.inputBox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.inputBox i::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff1b69, #ff0, #2196f3, #9c27b0, #ff1b69);
+    animation: animate 2s linear infinite;
+    transition: 0.5s;
+}
+
+.inputBox input:valid ~ i::before,
+.inputBox input:focus ~ i::before {
+    left: 0;
+}
+
+@keyframes animate {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 25em;
+    }
+}
+
+/* ------------------------- Game ------------------------- */
+
+#whoPlayer, #whoWriter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80%;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#showPlayer, #showWriter {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#wordDiv, #infiltrateDiv, #impostorDiv, #clockDiv, #writeDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80%;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#clockDiv {
+    height: 100%;
+}
+
+#showWord, #showInfiltrate, #showImpostor, #timeGame, #writeWord {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+/* ------------------------- Finish Menu ------------------------- */
+
+#finishPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+
+    /*
+    border-color: green;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
+
+#finishMenu {
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    /*
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    */
+}
